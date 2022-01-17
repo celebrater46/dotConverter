@@ -8,23 +8,8 @@ $("#select").click(function() {
 
 $("#convert").click(function() {
   let checkSW = [false, true];
-  // let cb = document.op.checkBox;
-
-  // for (let i = 0; i < cb.length; i++) {
-  //   if (cb[i].checked) {
-  //     checkSW[i] = true;    
-  //     // console.log(cb[i].value + "が選択されました。");
-  //     // console.log(checkSW);
-  //   }
-  // }
-
   let sourceText = document.getElementById("source").value;
   let result = "";
-
-  // 改行処理
-  // if (checkSW[0] === true) {
-  //   sourceText = sourceText.replace(/\n/g, "<br>\n");
-  // }
 
   // 傍点処理
   if (checkSW[1] === true) {
@@ -44,10 +29,7 @@ $("#convert").click(function() {
     while (startBranket >= 0) {
       if (startBranket >= 0 && endBranket > startBranket) {
         result += sourceText.slice(0, startBranket);
-        // console.log(result);
-        // startBranket -= 1000000000;
-        // break;
-        
+
         emp = sourceText.slice(startBranket + 2, endBranket);
         deleter = sourceText.slice(0, endBranket + 2);
         sourceText = sourceText.replace(deleter, "");
@@ -70,11 +52,7 @@ $("#convert").click(function() {
     }
 
     result += sourceText;
-    
-    // result = sourceText.slice(0, startBranket - 1);
-    // result += "《《";
-    // result += sourceText.slice(startBranket + 2, endBranket);
-    // result += "》》";
+
     console.log("result:" + result);
     console.log("emp:" + emp);
     console.log("deleter:" + deleter);
@@ -82,20 +60,6 @@ $("#convert").click(function() {
     console.log("sourceText:" + sourceText);
     console.log("startBranket:" + startBranket);
     console.log("endBranket:" + endBranket);
-    // console.log(sourceText);
-
-
-
-    // sliceWords[i] = sourceText.slice(0, startBranket - 1);
-    // sliceWords[i+1] = "《《";
-    // sliceWords[i+2] = sourceText.slice(0, startBranket - 1);
- 
- 
- 
- 
-    // console.log(result.indexOf("《《")); // 12
-    // console.log(result.indexOf("》》")); // 23
-    // console.log(result.indexOf("お")); // 14
   } else {
     let result = sourceText;
   }
@@ -110,15 +74,8 @@ $("#convert").click(function() {
     result = result.replace(/》/g, "</rt><rp>）</rp></ruby>");
   }
 
-  // console.log(result);
   $("#html").val(result);
 
-  // let $checked = $("#option[name=checkBox]:checked");
-  // let letList = $checked.map(function(index, el) {
-  //   return $(this).val();
-  // });
-  // console.log(letList);
-  // console.log($checked);
 });
 
 $("#reset").click(function() {
